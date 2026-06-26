@@ -1,2 +1,3 @@
 # SQL-set
-SQLPractice SET with Questions
+SQLPractice SET Questions
+
