@@ -1,82 +1,88 @@
--- SELECT STATEMENET
+/*
+===========================================
+SQL SELECT Statement - Basic Examples
+===========================================
 
--- the SELECT statement is used to work with columns and specify what columns you want to work see in your output. There are a few other things as well that
--- we will discuss throughout this video
+Description:
+The SELECT statement is used to retrieve data from one or more columns in a table.
+You can select all columns, specific columns, perform calculations, and return
+unique values using DISTINCT.
 
-#We can also select a specefic number of column based on our requirement. 
+Topics Covered:
+1. Selecting all columns
+2. Selecting specific columns
+3. Formatting SELECT queries
+4. Using expressions and calculations
+5. Order of mathematical operations (PEMDAS)
+6. Removing duplicate values with DISTINCT
+===========================================
+*/
 
-#Now remember we can just select everything by saying:
-SELECT * 
-FROM parks_and_recreation.employee_demographics;
+-- Select all columns
+SELECT *
+FROM employee_demographics;
 
 
-#Let's try selecting a specific column
+-- Select a single column
 SELECT first_name
 FROM employee_demographics;
 
-#As you can see from the output, we only have the one column here now and don't see the others
 
-#Now let's add some more columns, we just need to separate the columns with columns
-SELECT first_name, last_name
-FROM employee_demographics;
-
-#Now the order doesn't normall matter when selecting your columns.
-#There are some use cases we will look at in later modules where the order of the column
-#Names in the select statement will matter, but for this you can put them in any order
-
-SELECT last_name, first_name, gender, age
-FROM employee_demographics;
-
-#You'll also often see SQL queries formatted like this.
-SELECT last_name, 
-first_name, 
-gender, 
-age
-FROM employee_demographics;
-
-#The query still runs the exact same, but it is easier to read and pick out the columns
-#being selected and what you're doing with them.
-
-#For example let's take a look at using a calculation in the select statement
-
-#You can see here we have the total_money_spent - we can perform calculations on this
+-- Select multiple columns
 SELECT first_name,
- last_name,
- total_money_spent,
- total_money_spent + 100
+       last_name
+FROM employee_demographics;
+
+
+-- Column order can be changed
+SELECT last_name,
+       first_name,
+       gender,
+       age
+FROM employee_demographics;
+
+
+-- Well-formatted SELECT statement
+SELECT
+    last_name,
+    first_name,
+    gender,
+    age
+FROM employee_demographics;
+
+
+-- Using calculations in SELECT
+SELECT
+    first_name,
+    last_name,
+    total_money_spent,
+    total_money_spent + 100 AS updated_total
 FROM customers;
 
-#See how it's pretty easy to read and to see which columns we are using.
 
-#Math in SQL does follow PEMDAS which stands for Parenthesis, Exponent, Multiplication,
-#Division, Addition, subtraction - it's the order of operation for math
-
-#For example - What will the output be?:
-SELECT first_name, 
-last_name,
-salary,
-salary + 100
-FROM employee_salary;
-#This is going to do 10* 100 which is 1000 and then adds the original 540
-
-#Now what will the output be when we do this?
-SELECT first_name, 
-last_name,
-salary,
-(salary + 100) * 10
+-- Salary calculation
+SELECT
+    first_name,
+    last_name,
+    salary,
+    salary + 100 AS increased_salary
 FROM employee_salary;
 
 
-# Pemdas
+-- Using parentheses (PEMDAS)
+SELECT
+    first_name,
+    last_name,
+    salary,
+    (salary + 100) * 10 AS calculated_salary
+FROM employee_salary;
 
-#One thing I wanted to show you about the select statement in this lesson is the DISTINCT Statement - this will return only unique values in
-#The output - and you won't have any duplicates
 
+-- Display all department IDs
 SELECT department_id
 FROM employee_salary;
 
+
+-- Display only unique department IDs
 SELECT DISTINCT department_id
 FROM employee_salary;
-
-#Now a lot happens in the select statement. We have an entire module dedicated to just the 
-#select statement so this is kind of just an introduction to the select statement.
