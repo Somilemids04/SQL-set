@@ -1,71 +1,128 @@
--- LIMIT and ALIASING
+/*
+===========================================
+SQL LIMIT & ALIAS Clauses
+===========================================
 
--- Limit is just going to specify how many rows you want in the output
+Description:
+The LIMIT clause restricts the number of rows returned by a query.
+
+Aliases provide temporary names for columns or expressions,
+making query results easier to read and understand.
+
+Topics Covered:
+1. LIMIT
+2. LIMIT with ORDER BY
+3. LIMIT with Offset
+4. Column Aliases
+5. Using the AS keyword
+===========================================
+*/
 
 
+/*--------------------------------------------------
+LIMIT Clause
+----------------------------------------------------
+
+The LIMIT clause restricts the number of rows
+returned by a query.
+
+Syntax:
+LIMIT number_of_rows
+
+--------------------------------------------------*/
+
+
+-- Display the first 3 records
 SELECT *
 FROM employee_demographics
 LIMIT 3;
 
--- if we change something like the order or use a group by it would change the output
 
+-- Display the first 3 employees sorted alphabetically
 SELECT *
 FROM employee_demographics
 ORDER BY first_name
 LIMIT 3;
 
--- now there is an additional paramater in limit which we can access using a comma that specifies the starting place
 
+/*--------------------------------------------------
+LIMIT with Offset
+----------------------------------------------------
+
+Syntax:
+LIMIT offset, row_count
+
+offset    -> Starting position (zero-based)
+row_count -> Number of rows to return
+
+--------------------------------------------------*/
+
+
+-- Display all employees sorted by first name
 SELECT *
 FROM employee_demographics
 ORDER BY first_name;
 
+
+-- Skip the first 3 rows and return the next 2 rows
 SELECT *
 FROM employee_demographics
 ORDER BY first_name
-LIMIT 3,2;
+LIMIT 3, 2;
 
--- this now says start at position 3 and take 2 rows after that
--- this is not used a lot in my opinion
 
--- you could us it if you wanted to select the third oldest person by doing this:
+/*--------------------------------------------------
+Example: Find the Third Oldest Employee
+--------------------------------------------------*/
+
+-- View employees ordered by age (oldest to youngest)
 SELECT *
 FROM employee_demographics
-ORDER BY age desc;
--- we can see it's Donna - let's try to select her
+ORDER BY age DESC;
+
+
+-- Skip the first two oldest employees
+-- Return the third oldest employee
 SELECT *
 FROM employee_demographics
-ORDER BY age desc
-LIMIT 2,1;
+ORDER BY age DESC
+LIMIT 2, 1;
 
 
--- ALIASING
+/*--------------------------------------------------
+Column Aliases
+----------------------------------------------------
 
--- aliasing is just a way to change the name of the column (for the most part)
--- it can also be used in joins, but we will look at that in the intermediate series
+Aliases provide temporary names for columns,
+expressions, or tables.
+
+Benefits:
+- Improves readability
+- Simplifies complex query outputs
+- Useful when working with aggregate functions
+
+--------------------------------------------------*/
 
 
-SELECT gender, AVG(age)
+-- Average age grouped by gender
+SELECT
+    gender,
+    AVG(age)
 FROM employee_demographics
-GROUP BY gender
-;
--- we can use the keyword AS to specify we are using an Alias
-SELECT gender, AVG(age) AS Avg_age
+GROUP BY gender;
+
+
+-- Using the AS keyword
+SELECT
+    gender,
+    AVG(age) AS average_age
 FROM employee_demographics
-GROUP BY gender
-;
+GROUP BY gender;
 
--- although we don't actually need it, but it's more explicit which I usually like
-SELECT gender, AVG(age) Avg_age
+
+-- AS keyword is optional
+SELECT
+    gender,
+    AVG(age) average_age
 FROM employee_demographics
-GROUP BY gender
-;
-
-
-
-
-
-
-
-
-
+GROUP BY gender;
