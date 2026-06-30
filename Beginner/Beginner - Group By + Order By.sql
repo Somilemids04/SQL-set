@@ -15,7 +15,7 @@ Topics Covered:
 2. Grouping multiple columns
 3. Aggregate functions
 4. ORDER BY
-5. Sorting multiple columns
+5. Sorting multiple columns 
 6. Sorting using column positions
 ===========================================
 */
