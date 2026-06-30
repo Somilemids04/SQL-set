@@ -34,7 +34,6 @@ It is commonly used with aggregate functions such as:
 - AVG()
 - MIN()
 - MAX()
-
 --------------------------------------------------*/
 
 
