@@ -1,7 +1,7 @@
 /*
 ===========================================
 SQL GROUP BY & ORDER BY Clauses
-===========================================
+=========================================== 
 
 Description:
 The GROUP BY clause groups rows that have identical values in one or
