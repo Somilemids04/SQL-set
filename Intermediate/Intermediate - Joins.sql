@@ -115,7 +115,7 @@ Useful for:
 SELECT *
 FROM employee_salary AS emp1
 INNER JOIN employee_salary AS emp2
-    ON emp1.employee_id = emp2.employee_id;
+    ON emp1.employee_id = emp2.employee_id; 
 
 
 -- Example: Pair each employee with the next employee ID
