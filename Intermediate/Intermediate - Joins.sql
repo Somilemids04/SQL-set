@@ -76,7 +76,7 @@ Returns:
 
 SELECT *
 FROM employee_salary AS sal
-LEFT JOIN employee_demographics AS dem
+LEFT JOIN employee_demographics AS dem 
     ON sal.employee_id = dem.employee_id;
 
 
