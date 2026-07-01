@@ -169,4 +169,4 @@ FROM employee_demographics AS dem
 INNER JOIN employee_salary AS sal
     ON dem.employee_id = sal.employee_id
 LEFT JOIN parks_departments AS dept
-    ON sal.dept_id = dept.department_id; 
+    ON sal.dept_id = dept.department_id;  
