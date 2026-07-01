@@ -135,7 +135,7 @@ SELECT
     emp2.last_name AS paired_last_name
 FROM employee_salary AS emp1
 INNER JOIN employee_salary AS emp2
-    ON emp1.employee_id + 1 = emp2.employee_id;
+    ON emp1.employee_id + 1 = emp2.employee_id; 
 
 
 /*--------------------------------------------------
