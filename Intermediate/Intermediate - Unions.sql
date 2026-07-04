@@ -1,77 +1,164 @@
-#UNIONS
+/*
+===========================================
+SQL UNION
+===========================================
+
+Description:
+The UNION operator combines the result sets of two
+or more SELECT statements by stacking rows vertically.
+
+Rules:
+1. Each SELECT statement must return the same number
+   of columns.
+2. Corresponding columns should have compatible
+   data types.
+3. The column names in the final result are taken
+   from the first SELECT statement.
+
+Types:
+- UNION (removes duplicates)
+- UNION ALL (keeps duplicates)
+
+===========================================
+*/
 
 
-#A union is how you can combine rows together- not columns like we have been doing with joins where one column is put next to another
-#Joins allow you to combine the rows of data
+/*--------------------------------------------------
+UNION with Different Data
+----------------------------------------------------
 
-#Now you should keep it the same kind of data otherwise if you start mixing tips with first_names it would be really confusing, but you can do it.
-#Let's try it out and use Union to bring together some random data, then we will look at an actual use case
+Although possible, combining unrelated columns
+is generally not recommended.
 
-SELECT first_name, last_name
+--------------------------------------------------*/
+
+SELECT
+    first_name,
+    last_name
 FROM employee_demographics
+
 UNION
-SELECT occupation, salary
+
+SELECT
+    occupation,
+    salary
 FROM employee_salary;
 
-#So you can see we basically combined the data together, but not side by side in different columns, but one on top of the other in the same columns
-#This obviously is not good since you're mixing data, but it can be done if you want.
 
-SELECT first_name, last_name
+/*--------------------------------------------------
+UNION with Matching Columns
+----------------------------------------------------
+
+Combines employee names from two tables.
+
+Duplicate rows are removed automatically.
+
+--------------------------------------------------*/
+
+SELECT
+    first_name,
+    last_name
 FROM employee_demographics
+
 UNION
-SELECT first_name, last_name
+
+SELECT
+    first_name,
+    last_name
 FROM employee_salary;
 
--- notice it gets rid of duplicates? Union is actually shorthand for Union Distinct
 
-SELECT first_name, last_name
-FROM employee_demographics
+/*--------------------------------------------------
 UNION DISTINCT
-SELECT first_name, last_name
-FROM employee_salary;
+----------------------------------------------------
 
--- we can use UNION ALL to show all values
+UNION is equivalent to UNION DISTINCT.
 
-SELECT first_name, last_name
+Duplicate rows are removed.
+
+--------------------------------------------------*/
+
+SELECT
+    first_name,
+    last_name
 FROM employee_demographics
-UNION ALL
-SELECT first_name, last_name
+
+UNION DISTINCT
+
+SELECT
+    first_name,
+    last_name
 FROM employee_salary;
 
 
+/*--------------------------------------------------
+UNION ALL
+----------------------------------------------------
 
-#Now Let's actually try to use UNION
-# The Parks department is trying to cut their budget and wants to identify older employees they can push out or high paid employees who they can reduce pay or push out
--- let's create some queries to help with this
+Returns all rows, including duplicates.
 
-SELECT first_name, last_name, 'Old'
+--------------------------------------------------*/
+
+SELECT
+    first_name,
+    last_name
+FROM employee_demographics
+
+UNION ALL
+
+SELECT
+    first_name,
+    last_name
+FROM employee_salary;
+
+
+/*--------------------------------------------------
+Practical Example
+----------------------------------------------------
+
+Categorize employees based on different criteria.
+
+--------------------------------------------------*/
+
+
+-- Employees older than 50
+SELECT
+    first_name,
+    last_name,
+    'Senior Employee' AS employee_category
 FROM employee_demographics
 WHERE age > 50;
 
 
+/*--------------------------------------------------
+Combining Multiple Result Sets
+--------------------------------------------------*/
 
-SELECT first_name, last_name, 'Old Lady' as Label
+SELECT
+    first_name,
+    last_name,
+    'Senior Female Employee' AS employee_category
 FROM employee_demographics
-WHERE age > 40 AND gender = 'Female'
+WHERE age > 40
+  AND gender = 'Female'
+
 UNION
-SELECT first_name, last_name, 'Old Man'
+
+SELECT
+    first_name,
+    last_name,
+    'Senior Male Employee'
 FROM employee_demographics
-WHERE age > 40 AND gender = 'Male'
+WHERE age > 40
+  AND gender = 'Male'
+
 UNION
-SELECT first_name, last_name, 'Highly Paid Employee'
+
+SELECT
+    first_name,
+    last_name,
+    'High Salary Employee'
 FROM employee_salary
 WHERE salary >= 70000
-ORDER BY first_name
-;
 
-
-
-
-
-
-
-
-
-
-
-
+ORDER BY first_name;
