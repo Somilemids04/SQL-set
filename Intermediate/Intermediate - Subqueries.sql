@@ -1,93 +1,127 @@
-# Subqueries
+/*
+===========================================
+SQL Subqueries
+===========================================
 
-#So subqueries are queries within queries. Let's see how this looks.
+Description:
+A subquery (also called an inner query or nested query)
+is a query embedded inside another SQL query.
 
-SELECT *
-FROM employee_demographics;
+Subqueries can be used in:
+1. WHERE clause
+2. SELECT clause
+3. FROM clause
+
+Common Uses:
+- Filtering records
+- Performing comparisons
+- Creating temporary result sets
+- Simplifying complex queries
+
+===========================================
+*/
 
 
-#Now let's say we wanted to look at employees who actually work in the Parks and Rec Department, we could join tables together or we could use a subquery
-#We can do that like this:
+/*--------------------------------------------------
+Subquery in the WHERE Clause
+----------------------------------------------------
+
+A subquery can be used to filter records based on
+the results returned by another query.
+
+--------------------------------------------------*/
 
 SELECT *
 FROM employee_demographics
-WHERE employee_id IN 
-			(SELECT employee_id
-				FROM employee_salary
-                WHERE dept_id = 1);
-                
-#So we are using that subquery in the where statement and if we just highlight the subwuery and run it it's basically a list we are selecting from in the outer query
+WHERE employee_id IN (
+    SELECT employee_id
+    FROM employee_salary
+    WHERE dept_id = 1
+);
+
+
+/*--------------------------------------------------
+Invalid Example
+----------------------------------------------------
+
+A subquery used with the IN operator must return
+only one column.
+
+--------------------------------------------------*/
 
 SELECT *
 FROM employee_demographics
-WHERE employee_id IN 
-			(SELECT employee_id, salary
-				FROM employee_salary
-                WHERE dept_id = 1);
+WHERE employee_id IN (
+    SELECT employee_id,
+           salary
+    FROM employee_salary
+    WHERE dept_id = 1
+);
 
-# now if we try to have more than 1 column in the subquery we get an error saying the operand should contain 1 column only 
 
-#We can also use subqueries in the select and the from statements - let's see how we can do this
+/*--------------------------------------------------
+Subquery in the SELECT Clause
+----------------------------------------------------
 
--- Let's say we want to look at the salaries and compare them to the average salary
+Display each employee's salary along with the
+overall average salary.
 
-SELECT first_name, salary, AVG(salary)
+--------------------------------------------------*/
+
+SELECT
+    first_name,
+    salary,
+    (
+        SELECT AVG(salary)
+        FROM employee_salary
+    ) AS average_salary
 FROM employee_salary;
--- if we run this it's not going to work, we are using columns with an aggregate function so we need to use group by
--- if we do that though we don't exactly get what we want
-SELECT first_name, salary, AVG(salary)
-FROM employee_salary
-GROUP BY first_name, salary;
-
--- it's giving us the average PER GROUP which we don't want
--- here's a good use for a subquery
-
-SELECT first_name, 
-salary, 
-(SELECT AVG(salary) 
-	FROM employee_salary)
-FROM employee_salary;
 
 
--- We can also use it in the FROM Statement
--- when we use it here it's almost like we are creating a small table we are querying off of
+/*--------------------------------------------------
+Subquery in the FROM Clause
+----------------------------------------------------
+
+A subquery in the FROM clause creates a temporary
+result set that can be queried like a table.
+
+Every derived table must have an alias.
+
+--------------------------------------------------*/
+
 SELECT *
-FROM (SELECT gender, MIN(age), MAX(age), COUNT(age),AVG(age)
-FROM employee_demographics
-GROUP BY gender) 
-;
--- now this doesn't work because we get an error saying we have to name it
-
-SELECT gender, AVG(Min_age)
-FROM (SELECT gender, MIN(age) Min_age, MAX(age) Max_age, COUNT(age) Count_age ,AVG(age) Avg_age
-FROM employee_demographics
-GROUP BY gender) AS Agg_Table
-GROUP BY gender
-;
+FROM (
+    SELECT
+        gender,
+        MIN(age) AS minimum_age,
+        MAX(age) AS maximum_age,
+        COUNT(age) AS employee_count,
+        AVG(age) AS average_age
+    FROM employee_demographics
+    GROUP BY gender
+) AS age_summary;
 
 
+/*--------------------------------------------------
+Querying a Derived Table
+----------------------------------------------------
 
+The derived table can be treated like any
+other table in a SQL query.
 
+--------------------------------------------------*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT
+    gender,
+    AVG(minimum_age) AS average_minimum_age
+FROM (
+    SELECT
+        gender,
+        MIN(age) AS minimum_age,
+        MAX(age) AS maximum_age,
+        COUNT(age) AS employee_count,
+        AVG(age) AS average_age
+    FROM employee_demographics
+    GROUP BY gender
+) AS age_summary
+GROUP BY gender;
