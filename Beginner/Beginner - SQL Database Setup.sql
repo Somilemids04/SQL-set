@@ -63,7 +63,7 @@ CREATE TABLE employee_salary (
     last_name VARCHAR(50) NOT NULL,
     occupation VARCHAR(50),
     salary INT,
-    dept_id INT
+    dept_id INT 
 );
 
 
