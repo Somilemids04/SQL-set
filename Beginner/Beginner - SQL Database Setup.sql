@@ -13,7 +13,7 @@ SQL queries. It includes:
 4. Departments table
 5. Sample data for testing SQL queries
 
-This dataset can be used to practice:
+This dataset can be used to practice: 
 - SELECT
 - WHERE
 - GROUP BY
