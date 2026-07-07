@@ -6,7 +6,7 @@ SQL SELECT Statement - Basic Examples
 Description:
 The SELECT statement is used to retrieve data from one or more columns in a table.
 You can select all columns, specific columns, perform calculations, and return
-unique values using DISTINCT.
+unique values using DISTINCT in SQL.
 
 Topics Covered:
 1. Selecting all columns
