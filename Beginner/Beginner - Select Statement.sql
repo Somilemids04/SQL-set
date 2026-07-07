@@ -42,7 +42,7 @@ SELECT last_name,
 FROM employee_demographics;
 
 
--- Well-formatted SELECT statement
+-- formatted SELECT statement
 SELECT
     last_name,
     first_name,
