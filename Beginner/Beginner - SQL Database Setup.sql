@@ -89,7 +89,7 @@ VALUES
 (8, 'Chris', 'Traeger', 43, 'Male', '1980-11-11'),
 (9, 'Ben', 'Wyatt', 38, 'Male', '1985-07-26'),
 (10, 'Andy', 'Dwyer', 34, 'Male', '1989-03-25'),
-(11, 'Mark', 'Brendanawicz', 40, 'Male', '1983-06-14'),
+(11, 'Mark', 'Brendanawicz', 40, 'Male', '1983-06-14'), 
 (12, 'Craig', 'Middlebrooks', 37, 'Male', '1986-07-27');
 
 
