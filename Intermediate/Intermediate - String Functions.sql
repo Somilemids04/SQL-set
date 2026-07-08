@@ -86,7 +86,7 @@ Removes whitespace from the left side only.
 
 --------------------------------------------------*/
 
-SELECT LTRIM('     I love SQL');
+SELECT LTRIM('     I love SQL'); 
 
 
 /*--------------------------------------------------
