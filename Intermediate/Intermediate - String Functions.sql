@@ -10,7 +10,7 @@ and analyze text values in SQL.
 Common Uses:
 1. Converting text case
 2. Removing whitespace
-3. Extracting characters
+3. Extracting characters 
 4. Replacing text
 5. Searching within strings
 6. Concatenating strings
