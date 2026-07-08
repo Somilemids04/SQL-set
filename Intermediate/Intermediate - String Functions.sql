@@ -29,7 +29,7 @@ Returns the number of characters in a string.
 
 SELECT LENGTH('SQL');
 
-SELECT
+SELECT 
     first_name,
     LENGTH(first_name) AS name_length
 FROM employee_demographics;
