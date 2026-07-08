@@ -5,7 +5,7 @@ SQL String Functions
 
 Description:
 String functions are used to manipulate, transform,
-and analyze text values in SQL.
+And analyze text values in SQL.
 
 Common Uses:
 1. Converting text case
