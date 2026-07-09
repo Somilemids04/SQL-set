@@ -163,7 +163,7 @@ AS
     GROUP BY gender
 )
 
-SELECT
+SELECT 
     gender,
     ROUND(total_salary / employee_count, 2) AS average_salary
 FROM employee_summary;
