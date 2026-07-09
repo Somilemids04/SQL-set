@@ -1,111 +1,90 @@
--- Using Temporary Tables
--- Temporary tables are tables that are only visible to the session that created them. 
--- They can be used to store intermediate results for complex queries or to manipulate data before inserting it into a permanent table.
+/*
+===========================================
+SQL Temporary Tables
+===========================================
 
--- There's 2 ways to create temp tables:
--- 1. This is the less commonly used way - which is to build it exactly like a real table and insert data into it
+Description:
+A Temporary Table is a table that exists only for
+the duration of the current database session.
+
+Temporary tables are useful for storing intermediate
+results, simplifying complex queries, and improving
+query readability.
+
+Characteristics:
+- Session-specific
+- Automatically removed when the session ends
+- Behaves like a regular table during its lifetime
+
+===========================================
+*/
+
+
+/*--------------------------------------------------
+Method 1: Create an Empty Temporary Table
+----------------------------------------------------
+
+Create the table structure first, then insert data.
+
+--------------------------------------------------*/
 
 CREATE TEMPORARY TABLE temp_table
-(first_name varchar(50),
-last_name varchar(50),
-favorite_movie varchar(100)
+(
+    first_name     VARCHAR(50),
+    last_name      VARCHAR(50),
+    favorite_movie VARCHAR(100)
 );
 
--- if we execute this it gets created and we can actualyl query it.
+
+/*--------------------------------------------------
+View Temporary Table
+--------------------------------------------------*/
 
 SELECT *
 FROM temp_table;
--- notice that if we refresh out tables it isn't there. It isn't an actual table. It's just a table in memory.
 
--- now obviously it's balnk so we would need to insert data into it like this:
+
+/*--------------------------------------------------
+Insert Data into Temporary Table
+--------------------------------------------------*/
 
 INSERT INTO temp_table
-VALUES ('Alex','Freberg','Lord of the Rings: The Twin Towers');
+VALUES
+(
+    'Alex',
+    'Freberg',
+    'The Lord of the Rings: The Two Towers'
+);
 
--- now when we run it and execute it again we have our data
+
+/*--------------------------------------------------
+View Inserted Data
+--------------------------------------------------*/
+
 SELECT *
 FROM temp_table;
 
--- the second way is much faster and my preferred method
--- 2. Build it by inserting data into it - easier and faster
 
-CREATE TEMPORARY TABLE salary_over_50k
+/*--------------------------------------------------
+Method 2: Create Temporary Table from a Query
+----------------------------------------------------
+
+Creates the table and populates it in a single step.
+
+This is the most commonly used approach.
+
+--------------------------------------------------*/
+
+CREATE TEMPORARY TABLE salary_over_50k AS
+
 SELECT *
 FROM employee_salary
 WHERE salary > 50000;
 
--- if we run this query we get our output
+
+/*--------------------------------------------------
+Query the Temporary Table
+--------------------------------------------------*/
+
 SELECT *
-FROM temp_table_2;
-
--- this is the primary way I've used temp tables especially if I'm just querying data and have some complex data I want to put into boxes or these temp tables to use later
--- it helps me kind of categorize and separate it out
-
--- In the next lesson we will look at the Temp Tables vs CTEs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+FROM salary_over_50k;
