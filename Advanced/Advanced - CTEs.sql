@@ -150,7 +150,7 @@ WITH employee_summary
     employee_count
 )
 AS
-(
+( 
     SELECT
         gender,
         SUM(salary),
