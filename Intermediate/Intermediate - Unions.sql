@@ -4,7 +4,7 @@ SQL UNION
 ===========================================
 
 Description:
-The UNION operator combines the result sets of two
+The UNION operator combines the result sets of two 
 or more SELECT statements by stacking rows vertically.
 
 Rules: 
