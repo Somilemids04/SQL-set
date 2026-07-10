@@ -7,7 +7,7 @@ Description:
 The UNION operator combines the result sets of two
 or more SELECT statements by stacking rows vertically.
 
-Rules:
+Rules: 
 1. Each SELECT statement must return the same number
    of columns.
 2. Corresponding columns should have compatible
