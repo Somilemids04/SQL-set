@@ -91,7 +91,7 @@ Returns:
 
 --------------------------------------------------*/
 
-SELECT *
+SELECT * 
 FROM employee_salary AS sal
 RIGHT JOIN employee_demographics AS dem
     ON sal.employee_id = dem.employee_id;  
