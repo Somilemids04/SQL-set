@@ -19,7 +19,7 @@ Types:
 - UNION (removes duplicates)
 - UNION ALL (keeps duplicates)
 
-===========================================
+=========================================== 
 */
 
 
