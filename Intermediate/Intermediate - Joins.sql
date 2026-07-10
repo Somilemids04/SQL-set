@@ -7,7 +7,7 @@ Description:
 A JOIN combines data from two or more tables based on a
 related column between them.
 
-Common JOIN Types:
+Common JOIN Types: 
 1. INNER JOIN
 2. LEFT JOIN
 3. RIGHT JOIN
