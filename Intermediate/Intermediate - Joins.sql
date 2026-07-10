@@ -16,7 +16,7 @@ Common JOIN Types:
 
 Prerequisite:
 The tables should have a common column (or related values)
-that can be used to establish the relationship.
+that can be used to establish the relationship. 
 
 ===========================================
 */
