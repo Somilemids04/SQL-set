@@ -10,7 +10,7 @@ related column between them.
 Common JOIN Types: 
 1. INNER JOIN 
 2. LEFT JOIN
-3. RIGHT JOIN
+3. RIGHT JOIN 
 4. SELF JOIN
 5. Joining Multiple Tables
 
