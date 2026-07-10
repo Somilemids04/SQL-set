@@ -46,7 +46,7 @@ FROM employee_salary;
 
 
 /*--------------------------------------------------
-UNION with Matching Columns
+UNION with Matching Columns 
 ----------------------------------------------------
 
 Combines employee names from two tables.
