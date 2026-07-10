@@ -49,7 +49,7 @@ FROM employee_salary;
 UNION with Matching Columns 
 ----------------------------------------------------
 
-Combines employee names from two tables.
+Combines employee names from two tables. 
 
 Duplicate rows are removed automatically.
 
