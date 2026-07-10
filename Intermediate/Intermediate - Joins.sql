@@ -52,7 +52,7 @@ INNER JOIN employee_salary
 Using Table Aliases
 ----------------------------------------------------
 
-Aliases make queries shorter and easier to read,
+Aliases make queries shorter and easier to read, 
 especially when working with multiple tables.
 
 --------------------------------------------------*/
