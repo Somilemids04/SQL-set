@@ -39,7 +39,7 @@ It is commonly used with aggregate functions such as:
 
 -- Display all employee demographic records
 SELECT *
-FROM employee_demographics;
+FROM employee_demographics; 
 
 
 -- Group employees by gender
