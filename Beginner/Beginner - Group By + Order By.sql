@@ -59,7 +59,7 @@ FROM employee_demographics
 GROUP BY gender;
 
 
--- Group employees by occupation
+-- Group employees by occupation 
 SELECT occupation
 FROM employee_salary
 GROUP BY occupation;
