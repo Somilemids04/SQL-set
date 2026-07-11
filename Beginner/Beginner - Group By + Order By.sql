@@ -68,7 +68,7 @@ GROUP BY occupation;
 -- Group by multiple columns
 SELECT
     occupation,
-    salary
+    salary 
 FROM employee_salary
 GROUP BY
     occupation,
