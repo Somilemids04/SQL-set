@@ -76,7 +76,7 @@ This is the most commonly used approach.
 --------------------------------------------------*/
 
 CREATE TEMPORARY TABLE salary_over_50k AS
-
+    
 SELECT *
 FROM employee_salary
 WHERE salary > 50000;
