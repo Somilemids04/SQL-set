@@ -75,7 +75,7 @@ GROUP BY
     salary;
 
 
--- Calculate average age for each gender
+-- Calculate average age for each gender 
 SELECT
     gender,
     AVG(age) AS average_age
