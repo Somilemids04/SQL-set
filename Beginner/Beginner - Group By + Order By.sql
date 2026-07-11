@@ -71,7 +71,7 @@ SELECT
     salary
 FROM employee_salary
 GROUP BY
-    occupation, 
+    occupation,
     salary;
 
 
